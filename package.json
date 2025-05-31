@@ -1,0 +1,19 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
+    "start-client": "cd client && npm start",
+    "start-server": "cd server && node server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "lucide-react": "^0.511.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.7"
+  }
+}
