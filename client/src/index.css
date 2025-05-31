@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #000000;
+  color: #E0E0E0; /* Gris claro para texto */
+  margin: 0; /* Asegúrate de que no haya márgenes por defecto */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gradiente oscuro para el fondo (sutil) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(70, 0, 62, 0.3), transparent 60%),
+              radial-gradient(circle at bottom left, rgba(70, 0, 62, 0.2), transparent 70%),
+              #000000;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #46003E 0%, #0D0D0D 100%);
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out; /* Añadido left para móvil */
+}
+
+.logo {
+  color: #F0C000;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.menu-item a {
+  color: #E0E0E0;
+  padding: 12px 20px;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+  white-space: nowrap;
+}
+
+.menu-item a:hover, .menu-item a.active {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #F0C000;
+  padding-left: 25px;
+}
+
+.menu-item a i {
+  margin-right: 15px;
+  width: 20px; /* Alineación de iconos */
+  text-align: center;
+}
+
+.menu-item .italic-link {
+  font-style: italic;
+}
+
+.login-button {
+  background-color: #F0C000;
+  color: #1a1a1a; /* Texto oscuro para contraste */
+  font-weight: 600;
+  border-radius: 9999px; /* Píldora */
+  padding: 10px 28px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(240, 192, 0, 0.2);
+}
+
+.login-button:hover {
+  background-color: #d4ac0d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240, 192, 0, 0.3);
+}
+
+.search-bar {
+  background-color: rgba(30, 30, 30, 0.6); /* Fondo más oscuro */
+  backdrop-filter: blur(8px); /* Efecto Glassmorphism */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #E0E0E0;
+}
+.search-bar::placeholder { color: #888; }
+
+.category-title {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* 24px */
+  display: flex;
+  align-items: center;
+}
+.category-title span {
+  color: #F0C000;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.category-title:hover span {
+   transform: translateX(5px);
+}
+
+.product-card {
+  background-color: #121212; /* Fondo de tarjeta casi negro */
+  border: 1px solid #282828; /* Borde sutil */
+  border-radius: 12px;
+  padding: 1.25rem; /* 20px */
+  width: 180px; /* Ancho fijo para carrusel */
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Añadido border-color */
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  border-color: #F0C000;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px; /* Altura fija para imágenes */
+  object-fit: contain; /* Para que la botella se vea completa */
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card h3 {
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 40px; /* Espacio para 2 líneas */
+  color: #E0E0E0; /* Asegurar color de texto */
+}
+
+/* Estilo Checkbox (Cuadrado vacío/lleno) */
+.select-checkbox {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-checkbox.selected {
+  background-color: #F0C000;
+  border-color: #F0C000;
+}
+.select-checkbox.selected::after {
+  content: '\f00c'; /* Check icon (Font Awesome) */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: #0D0D0D;
+  font-size: 14px;
+}
+
+.product-card:hover .select-checkbox {
+  border-color: #F0C000;
+}
+
+/* Scrollbar global oscuro y elegante */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a0820; /* Muy oscuro, burgundy casi negro */
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #46003E; /* Burgundy oscuro */
+  border-radius: 6px;
+  border: 2px solid #1a0820;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6a005d; /* Burgundy más claro al hover */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #46003E #1a0820;
+}
+
+/* Elimina estilos previos de horizontal-carousel, ya no es necesario */
+
+/* Oculta flechas de los inputs type=number (spinners) */
+.hide-number-spin::-webkit-outer-spin-button,
+.hide-number-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.hide-number-spin {
+  -moz-appearance: textfield;
+}
+
+/* Responsive Sidebar - Clases para React que no cubre Tailwind */
+.sidebar-mobile-closed {
+  left: -256px;
+}
+.sidebar-mobile-open {
+  left: 0;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 256px;
+    height: 100%;
+    z-index: 50;
+  }
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    top: 20px;
+  }
+}
+
+@media (min-width: 769px) {
+  .main-content-shifted {
+    margin-left: 16rem; /* 256px, ancho del sidebar */
+  }
+  .main-content-normal {
+    margin-left: 0;
+  }
+}
+
+/* Adicional para asegurar que el contenido principal no se solape con el header fijo (si lo fuera) */
+main {
+  padding-top: 1rem; /* Ajustar si el header se vuelve fijo */
+}
